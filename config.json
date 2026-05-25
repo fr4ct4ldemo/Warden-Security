@@ -1,0 +1,26 @@
+{
+  "embedColors": {
+    "default": 16777215,
+    "dark": 0
+  },
+  "maxWarnings": 3,
+  "mutedRoleName": "Muted",
+  "verifiedRoleName": "Verified",
+  "defaultWarnPunishments": {
+    "2": "mute",
+    "3": "kick",
+    "5": "ban"
+  },
+  "automodDefaults": {
+    "antiSpam": { "enabled": false, "limit": 5, "interval": 5000 },
+    "antiLink": { "enabled": false, "whitelist": [] },
+    "antiPhishing": { "enabled": false },
+    "antiAlt": { "enabled": false, "minAge": 7 },
+    "antiRaid": { "enabled": false, "threshold": 5 },
+    "antiMentions": { "enabled": false, "limit": 5 },
+    "antiCaps": { "enabled": false, "percent": 70, "minLength": 10 },
+    "antiEmoji": { "enabled": false, "limit": 10 },
+    "antiWord": { "enabled": false, "words": [] },
+    "antiMassMention": { "enabled": false }
+  }
+}

@@ -1,0 +1,26 @@
+'use strict';
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
+const { successEmbed, errorEmbed } = require('../../utils/embedBuilder');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('unflaguser')
+    .setDescription('Remove a suspicious flag from a user')
+    .addUserOption(opt => opt.setName('user').setDescription('User to unflag').setRequired(true)),
+
+  async execute(interaction, client) {
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+    try {
+      const user = interaction.options.getUser('user');
+
+      await interaction.editReply({
+        embeds: [successEmbed('✅ Flag Removed', `Suspicious flag removed from <@${user.id}>.`)]
+      });
+    } catch (err) {
+      console.error(err);
+      await interaction.editReply({
+        embeds: [errorEmbed('❌ Error', 'Could not remove flag.')]
+      });
+    }
+  }
+};
