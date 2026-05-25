@@ -15,7 +15,7 @@
 
 ## 🌐 Dashboard
 
-![Dashboard Landing](.github/screenshots/dashboard.png)
+![Dashboard Landing](https://github.com/user-attachments/assets/f8e220ae-a224-486f-86ed-c5455e5b37d4)
 
 Warden ships with a full web dashboard — manage every setting without typing a single command.
 
@@ -56,7 +56,7 @@ Warden ships with a full web dashboard — manage every setting without typing a
 
 ## 🖥️ Console
 
-![Console Preview](.github/screenshots/console.png)
+![Console Preview](https://github.com/user-attachments/assets/2a627607-8073-4be7-aa55-e8546792e4a6)
 
 ---
 
