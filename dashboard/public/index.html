@@ -471,7 +471,9 @@ select option { background: #0f0f17; }
 .landing-nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   padding: 0 48px;
   height: 68px;
   background: rgba(7,8,15,0.7);
@@ -502,7 +504,7 @@ select option { background: #0f0f17; }
 }
 
 .landing-nav-links {
-  display: flex; align-items: center; gap: 32px;
+  display: flex; align-items: center; justify-content: center; gap: 32px;
   list-style: none;
 }
 .landing-nav-links a {
@@ -513,7 +515,7 @@ select option { background: #0f0f17; }
 }
 .landing-nav-links a:hover { color: #e8e9f4; }
 
-.landing-nav-right { display: flex; align-items: center; gap: 12px; }
+.landing-nav-right { display: flex; align-items: center; gap: 12px; justify-content: flex-end; }
 
 .nav-login-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1025,8 +1027,8 @@ function renderLanding() {
         </a>
         <ul class="landing-nav-links">
           <li><a href="#features">Features</a></li>
-          <li><a href="#" onclick="return false;">Docs</a></li>
-          <li><a href="#" onclick="return false;">Support</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/support">Support</a></li>
         </ul>
         <div class="landing-nav-right">
           <a href="/login" class="nav-login-btn">
@@ -1045,12 +1047,12 @@ function renderLanding() {
           <a href="#features" class="hero-secondary">See Features &nbsp;→</a>
         </div>
         <div class="hero-features">
-          <div class="feature-pill"><span class="feature-pill-icon">🛡️</span> Anti-Nuke</div>
-          <div class="feature-pill"><span class="feature-pill-icon">🚫</span> Anti-Raid</div>
-          <div class="feature-pill"><span class="feature-pill-icon">⚡</span> Automod</div>
-          <div class="feature-pill"><span class="feature-pill-icon">🔒</span> Anti-Phishing</div>
-          <div class="feature-pill"><span class="feature-pill-icon">✅</span> Verification</div>
-          <div class="feature-pill"><span class="feature-pill-icon">📋</span> Mod Logs</div>
+          <div class="feature-pill"><img src="/dashboard-icon/shield.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Anti-Nuke</div>
+          <div class="feature-pill"><img src="/dashboard-icon/anti-raid.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Anti-Raid</div>
+          <div class="feature-pill"><img src="/dashboard-icon/zap.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Automod</div>
+          <div class="feature-pill"><img src="/dashboard-icon/lock.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Anti-Phishing</div>
+          <div class="feature-pill"><img src="/dashboard-icon/verification.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Verification</div>
+          <div class="feature-pill"><img src="/dashboard-icon/clipboard.png" style="width:14px;height:14px;object-fit:contain;vertical-align:middle;"/> Mod Logs</div>
         </div>
         <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
       </section>
@@ -1066,12 +1068,12 @@ function renderLanding() {
         <div class="section-label">Capabilities</div>
         <div class="section-title">Everything you need to<br/><em>moderate at scale</em></div>
         <div class="feature-cards">
-          <div class="feat-card"><div class="feat-card-icon">🛡️</div><div class="feat-card-title">Anti-Nuke</div><div class="feat-card-desc">Real-time detection of mass channel deletes, role wipes, and ban waves. Stops attacks within seconds before damage spreads.</div></div>
-          <div class="feat-card"><div class="feat-card-icon">🚫</div><div class="feat-card-title">Anti-Raid</div><div class="feat-card-desc">Detects mass-join events and automatically triggers server lockdown, protecting your community from coordinated raids.</div></div>
-          <div class="feat-card"><div class="feat-card-icon">⚡</div><div class="feat-card-title">Automod Suite</div><div class="feat-card-desc">Anti-spam, anti-caps, anti-link, anti-phishing, anti-mentions, anti-emoji and more &mdash; all tunable from the dashboard.</div></div>
-          <div class="feat-card"><div class="feat-card-icon">🔒</div><div class="feat-card-title">Anti-Phishing</div><div class="feat-card-desc">Automatically detects and removes known phishing and scam URLs before they reach your members.</div></div>
-          <div class="feat-card"><div class="feat-card-icon">✅</div><div class="feat-card-title">Verification System</div><div class="feat-card-desc">Button-based member verification with configurable channels and roles, keeping bots and alts out effortlessly.</div></div>
-          <div class="feat-card"><div class="feat-card-icon">📋</div><div class="feat-card-title">Full Mod Logging</div><div class="feat-card-desc">Every ban, kick, warn, mute and automod action logged with context, moderator, and timestamp. Full audit trail.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/shield.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Anti-Nuke</div><div class="feat-card-desc">Real-time detection of mass channel deletes, role wipes, and ban waves. Stops attacks within seconds before damage spreads.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/anti-raid.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Anti-Raid</div><div class="feat-card-desc">Detects mass-join events and automatically triggers server lockdown, protecting your community from coordinated raids.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/zap.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Automod Suite</div><div class="feat-card-desc">Anti-spam, anti-caps, anti-link, anti-phishing, anti-mentions, anti-emoji and more &mdash; all tunable from the dashboard.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/lock.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Anti-Phishing</div><div class="feat-card-desc">Automatically detects and removes known phishing and scam URLs before they reach your members.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/verification.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Verification System</div><div class="feat-card-desc">Button-based member verification with configurable channels and roles, keeping bots and alts out effortlessly.</div></div>
+          <div class="feat-card"><div class="feat-card-icon"><img src="/dashboard-icon/clipboard.png" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;"/></div><div class="feat-card-title">Full Mod Logging</div><div class="feat-card-desc">Every ban, kick, warn, mute and automod action logged with context, moderator, and timestamp. Full audit trail.</div></div>
         </div>
       </section>
 
@@ -1135,13 +1137,13 @@ function sidebar() {
   const serverNav = state.activeGuild ? `
     <div class="nav-section">
       <span class="nav-label">Server</span>
-      ${ni('overview','🏠','Overview')}
-      ${ni('moderation','🔨','Moderation')}
-      ${ni('security','🛡️','Security')}
-      ${ni('logging','📋','Logging')}
-      ${ni('automod','⚙️','Automod')}
-      ${ni('verification','✅','Verification')}
-      ${ni('rankcards','🏆','Rank Cards')}
+      ${ni('overview','<img src="/dashboard-icon/house.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Overview')}
+      ${ni('moderation','<img src="/dashboard-icon/gavel.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Moderation')}
+      ${ni('security','<img src="/dashboard-icon/shield.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Security')}
+      ${ni('logging','<img src="/dashboard-icon/clipboard.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Logging')}
+      ${ni('automod','<img src="/dashboard-icon/settings.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Automod')}
+      ${ni('verification','<img src="/dashboard-icon/verification.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Verification')}
+      ${ni('rankcards','<img src="/dashboard-icon/trophy.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','Rank Cards')}
     </div>` : '';
 
   return `<div class="sidebar">
@@ -1160,7 +1162,7 @@ function sidebar() {
     <div class="nav">
       <div class="nav-section">
         <span class="nav-label">General</span>
-        ${ni('servers','🌐','All Servers')}
+        ${ni('servers','<img src="/dashboard-icon/globe.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/>','All Servers')}
       </div>
       ${serverNav}
     </div>
@@ -1248,7 +1250,7 @@ function pageServers() {
       <div class="card-sub">Servers where Warden is live and ready to manage.</div>
       ${active.length
         ? `<div class="guild-grid">${active.map(card).join('')}</div>`
-        : `<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">No active servers</div><div class="empty-sub">Add Warden to a server to get started.</div></div>`}
+        : `<div class="empty-state"><div class="empty-icon"><img src="/dashboard-icon/search.png" style="width:44px;height:44px;object-fit:contain;vertical-align:middle;"/></div><div class="empty-text">No active servers</div><div class="empty-sub">Add Warden to a server to get started.</div></div>`}
     </div>
     ${others.length ? `
     <div class="card">
@@ -1276,10 +1278,10 @@ function pageOverview() {
 
   return `
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-label">Members</div><div class="stat-value">${g.memberCount.toLocaleString()}</div></div>
-      <div class="stat-card"><div class="stat-icon">📢</div><div class="stat-label">Channels</div><div class="stat-value">${g.channels.length}</div></div>
-      <div class="stat-card"><div class="stat-icon">🎭</div><div class="stat-label">Roles</div><div class="stat-value">${g.roles.length}</div></div>
-      <div class="stat-card"><div class="stat-icon">🛡️</div><div class="stat-label">Active Features</div><div class="stat-value">${activeCount}<span style="font-size:14px;color:var(--muted);font-weight:500">/${features.length}</span></div></div>
+      <div class="stat-card"><div class="stat-icon"><img src="/dashboard-icon/users.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;"/></div><div class="stat-label">Members</div><div class="stat-value">${g.memberCount.toLocaleString()}</div></div>
+      <div class="stat-card"><div class="stat-icon"><img src="/dashboard-icon/megaphone.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;"/></div><div class="stat-label">Channels</div><div class="stat-value">${g.channels.length}</div></div>
+      <div class="stat-card"><div class="stat-icon"><img src="/dashboard-icon/drama.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;"/></div><div class="stat-label">Roles</div><div class="stat-value">${g.roles.length}</div></div>
+      <div class="stat-card"><div class="stat-icon"><img src="/dashboard-icon/shield.png" style="width:20px;height:20px;object-fit:contain;vertical-align:middle;"/></div><div class="stat-label">Active Features</div><div class="stat-value">${activeCount}<span style="font-size:14px;color:var(--muted);font-weight:500">/${features.length}</span></div></div>
     </div>
     <div class="card">
       <div class="card-title">Protection Status</div>
@@ -1493,7 +1495,7 @@ function pageRankCards() {
   ];
 
   const posClass = r => r===1?'gold':r===2?'silver':r===3?'bronze':'';
-  const posLabel = r => r===1?'🥇':r===2?'🥈':r===3?'🥉':`#${r}`;
+  const posLabel = r => r===1?'<img src="/dashboard-icon/medal.png" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"/>':r===2?'<img src="/dashboard-icon/medal.png" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"/>':r===3?'<img src="/dashboard-icon/medal.png" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"/>':`#${r}`;
   const initials = n => n.slice(0,2).toUpperCase();
   const fmtXP = n => n >= 1000 ? (n/1000).toFixed(1)+'k' : n;
 
@@ -1535,7 +1537,7 @@ function pageRankCards() {
         <div class="card" style="padding:0;overflow:hidden;margin-bottom:18px">
           <div style="padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
             <div>
-              <div class="card-title" style="margin:0 0 2px">🏆 Leaderboard</div>
+              <div class="card-title" style="margin:0 0 2px;display:flex;align-items:center;gap:7px"><img src="/dashboard-icon/trophy.png" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;"/> Leaderboard</div>
               <div style="font-size:11px;color:var(--muted)">Top members by XP — live preview with mock data</div>
             </div>
             <span class="badge badge-purple">● ${mockUsers.length} Members</span>

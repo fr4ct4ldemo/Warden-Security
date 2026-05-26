@@ -17,6 +17,7 @@ async function startDashboard(client) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/dashboard-icon', express.static(path.join(__dirname, 'dashboard-icon')));
   app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -68,6 +69,10 @@ async function startDashboard(client) {
   });
 
   app.get('/logout', (req, res) => { req.session.destroy(); res.redirect('/'); });
+
+  // Static pages
+  app.get('/docs',    (req, res) => res.sendFile(path.join(__dirname, 'public/docs.html')));
+  app.get('/support', (req, res) => res.sendFile(path.join(__dirname, 'public/support.html')));
 
   // API
   app.get('/api/user', requireAuth, (req, res) => res.json(req.session.user));
