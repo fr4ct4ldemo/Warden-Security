@@ -1271,6 +1271,8 @@ function pageOverview() {
     ['Anti-Nuke',     s.settings?.antiNuke?.enabled],
     ['Anti-Phishing', s.settings?.antiPhishing?.enabled],
     ['Verification',  s.verification?.enabled],
+    ['Anti-Word',     s.settings?.antiWord?.enabled],
+    ['Anti-Mass Mention', s.settings?.antiMassMention?.enabled],
   ];
   const activeCount = features.filter(f=>f[1]).length;
 
@@ -1430,6 +1432,8 @@ function pageSetting(section) {
       ${tog('antiInvite.enabled',   am.antiInvite?.enabled,   'Anti-Invite',   'Block Discord server invite links')}
       ${tog('antiZalgo.enabled',    am.antiZalgo?.enabled,    'Anti-Zalgo',    'Detect and block zalgo/corrupted text')}
       ${tog('antiAlt.enabled',      am.antiAlt?.enabled,      'Anti-Alt',      'Kick newly created accounts below minimum age')}
+      ${tog('antiWord.enabled',     am.antiWord?.enabled,     'Anti-Word',     'Block custom blacklisted words')}
+      ${tog('antiMassMention.enabled', am.antiMassMention?.enabled, 'Anti-Mass Mention', 'Block messages with excessive mass mentions')}
     </div>
     <div class="card">
       <div class="card-title">Sensitivity Thresholds</div>
