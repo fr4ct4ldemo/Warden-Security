@@ -4,6 +4,13 @@ const session = require('express-session');
 const axios = require('axios');
 const path = require('path');
 const db = require('../utils/database');
+const rateLimit = require('express-rate-limit');
+
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 60,
+  message: { error: 'Too many requests, slow down.' }
+});
 
 const DISCORD_CLIENT_ID     = process.env.DISCORD_CLIENT_ID;
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
@@ -16,6 +23,7 @@ async function startDashboard(client) {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.use('/api', apiLimiter);
   app.use(express.static(path.join(__dirname, 'public')));
   app.use('/dashboard-icon', express.static(path.join(__dirname, 'dashboard-icon')));
   app.use(session({
@@ -69,6 +77,10 @@ async function startDashboard(client) {
   });
 
   app.get('/logout', (req, res) => { req.session.destroy(); res.redirect('/'); });
+
+  app.get('/invite', (req, res) => {
+    res.redirect('https://discord.com/oauth2/authorize?client_id=1507588929472172152&permissions=1099511627775&scope=bot+applications.commands');
+  });
 
   // Static pages
   app.get('/docs',    (req, res) => res.sendFile(path.join(__dirname, 'public/docs.html')));

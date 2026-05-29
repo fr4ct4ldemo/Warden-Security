@@ -11,6 +11,7 @@ if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 const initSqlJs = require('sql.js');
 
 let SQL, db;
+let initialized = false;
 
 function save() {
   const data = db.export();
@@ -135,16 +136,7 @@ function all(sql, params = []) {
 
 // Initialize synchronously using a trick: sql.js supports sync init
 // We call initSqlJs synchronously by loading the wasm via locateFile
-let initialized = false;
-function ensureInit() {
-  if (initialized) return;
-  // This blocks the event loop once at startup — acceptable for bot init
-  // sql.js init is actually async, so we use a sync-style workaround:
-  // require the pre-compiled asm.js fallback
-  throw new Error('DB not initialized — call initDatabase() and await it before use.');
-}
 
-// Export an async init function — call this before starting the bot
 async function initDatabase() {
   SQL = await initSqlJs();
   initDb();
@@ -257,8 +249,11 @@ module.exports = {
 
   // Mod stats (counted from warnings table)
   getModStats(guildId, modId) {
-    const warns = all('SELECT COUNT(*) AS c FROM warnings WHERE guild_id = ? AND moderator_tag LIKE ?', [guildId, '%']);
-    return { bans: 0, kicks: 0, warns: Number((get('SELECT COUNT(*) AS c FROM warnings WHERE guild_id = ? AND moderator_tag LIKE ? AND reason NOT LIKE "[NOTE]%"', [guildId, '%']) || {}).c || 0), mutes: 0, timeouts: 0, unbans: 0 };
+    return {
+      bans: 0, kicks: 0,
+      warns: Number((get('SELECT COUNT(*) AS c FROM warnings WHERE guild_id = ? AND moderator_tag = ? AND reason NOT LIKE "[NOTE]%"', [guildId, modId]) || {}).c || 0),
+      mutes: 0, timeouts: 0, unbans: 0
+    };
   },
 
   // Watchlist (stored in guild_settings as JSON)
