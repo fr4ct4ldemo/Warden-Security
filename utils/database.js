@@ -52,6 +52,10 @@ function initDb() {
       channel_id TEXT NOT NULL,
       PRIMARY KEY (guild_id, channel_id)
     );
+    CREATE TABLE IF NOT EXISTS autoroles (
+      guild_id TEXT PRIMARY KEY,
+      role_id TEXT NOT NULL
+    );
     CREATE TABLE IF NOT EXISTS warn_punishments (
       guild_id TEXT NOT NULL,
       warn_count INTEGER NOT NULL,
@@ -188,6 +192,11 @@ module.exports = {
   setLogChannel(guildId, channelId) { run('INSERT INTO log_channels (guild_id, channel_id) VALUES (?, ?) ON CONFLICT(guild_id) DO UPDATE SET channel_id=excluded.channel_id', [guildId, channelId]); },
   getAutomodLogChannel(guildId) { const r = get('SELECT channel_id FROM automod_log_channels WHERE guild_id = ?', [guildId]); return r ? r.channel_id : null; },
   setAutomodLogChannel(guildId, channelId) { run('INSERT INTO automod_log_channels (guild_id, channel_id) VALUES (?, ?) ON CONFLICT(guild_id) DO UPDATE SET channel_id=excluded.channel_id', [guildId, channelId]); },
+
+  // Autorole
+  getAutorole(guildId) { const r = get('SELECT role_id FROM autoroles WHERE guild_id = ?', [guildId]); return r ? r.role_id : null; },
+  setAutorole(guildId, roleId) { run('INSERT INTO autoroles (guild_id, role_id) VALUES (?, ?) ON CONFLICT(guild_id) DO UPDATE SET role_id=excluded.role_id', [guildId, roleId]); },
+  removeAutorole(guildId) { run('DELETE FROM autoroles WHERE guild_id = ?', [guildId]); },
 
   // Ignored channels
   getIgnoredChannels(guildId) { return all('SELECT channel_id FROM ignored_channels WHERE guild_id = ?', [guildId]).map(r => r.channel_id); },
